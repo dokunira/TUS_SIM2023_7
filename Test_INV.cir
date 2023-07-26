@@ -1,0 +1,21 @@
+TEST INV
+
+.INCLUDE CMOS_INV.cir
+
+*.MODEL モデル名 タイプ(パラメータ1 = パラメータ値1 …)
+*level:モデル番号 vto:閾値電圧 l:チャネル長 w:チャネル幅 tox:酸化膜の厚さ cbd:BD間寄生容量 cbs:BS間寄生容量
+* .MODEL nmos1 nmos(level=3 vto=1 l=1u w=10u tox=0.5u cbd=20f cbs=20f)
+* .MODEL pmos1 pmos(level=3 vto=-1 l=1u w=10u tox=0.5u cbd=20f cbs=20f)
+.MODEL nmos1 nmos(vto=1)
+.MODEL pmos1 pmos(vto=-1)
+
+* 1:in 2:out 3:Vdd INV
+X1 1 2 3 INV
+
+VCC 3 0 DC=5
+* PWL(時間 値 時間 値 ・・・)
+VD 1 0 PWL(0 0 5u 5 7u 2.5 10u 2.5 12u 0)
+
+*.TRAN 刻み 終了時刻
+.TRAN 1n 12u
+.END

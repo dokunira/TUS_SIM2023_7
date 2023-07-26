@@ -1,0 +1,14 @@
+* SUBCKT Definitions - 4bit Counter -
+
+.INCLUDE DFF.cir
+
+* 1:CK 2:x0 3:x1 4:x2 5:x3 6:Vdd
+.SUBCKT CNT4 1 2 3 4 5 6
+
+* D CK Q invQ Vdd DFF
+X1 7 1 2 7 6 DFF
+X2 8 2 3 8 6 DFF
+X3 9 3 4 9 6 DFF
+X4 10 4 5 10 6 DFF
+
+.ENDS

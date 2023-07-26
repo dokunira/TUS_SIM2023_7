@@ -1,0 +1,13 @@
+*SUBCKT Definition - CMOS INVERTER -
+
+* 1:in 2:out 3:Vdd
+.SUBCKT INV 1 2 3
+
+*M Drain Gate Source BackSource ModelName
+MP 2 1 3 3 pmos1
+MN 2 1 0 0 nmos1
+
+*parasitic capacitance
+CL 2 0 0.05p
+
+.ENDS

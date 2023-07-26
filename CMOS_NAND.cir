@@ -1,0 +1,15 @@
+*SUBCKT Definition - CMOS NAND -
+
+* 1:inA 2:inB 3:out 4:Vdd
+.SUBCKT NAND 1 2 3 4
+
+*M Drain Gate Source BackSource ModelName
+M1 3 1 4 4 pmos1
+M2 3 2 4 4 pmos1
+M3 5 2 0 0 nmos1
+M4 3 1 5 0 nmos1
+
+*parasitic capacitance
+CL 3 0 0.05p
+
+.ENDS

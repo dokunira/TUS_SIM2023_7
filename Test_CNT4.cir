@@ -1,0 +1,26 @@
+TEST CNT4
+
+.INCLUDE CNT4.cir
+
+*.MODEL モデル名 タイプ(パラメータ1 = パラメータ値1 …)
+*level:モデル番号 vto:閾値電圧 l:チャネル長 w:チャネル幅 tox:酸化膜の厚さ cbd:BD間寄生容量 cbs:BS間寄生容量
+* .MODEL nmos1 nmos(level=3 vto=1 l=1u w=10u tox=0.5u cbd=20f cbs=20f)
+* .MODEL pmos1 pmos(level=3 vto=-1 l=1u w=10u tox=0.5u cbd=20f cbs=20f)
+.MODEL nmos1 nmos(vto=1)
+.MODEL pmos1 pmos(vto=-1)
+
+* 1:CK 2:x0 3:x1 4:x2 5:x3 6:Vdd CNT4
+X1 1 2 3 4 5 6 CNT4
+
+VCC 6 0 DC=5
+* PULSE(初期値 波高値 遅延時間 立上がり時間 立下り時間 パルス幅 周期)
+VCK 1 0 PULSE(0 5 0.5u 50n 50n 1u 2u)
+
+*.TRAN 刻み 終了時刻
+.TRAN 10n 40u
+* IC 初期値
+.IC V(2)=0
+.IC V(3)=0
+.IC V(4)=0
+.IC V(5)=0
+.END

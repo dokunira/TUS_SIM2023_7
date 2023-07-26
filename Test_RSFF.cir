@@ -1,0 +1,22 @@
+TEST RSFF
+
+.INCLUDE RSFF.cir
+
+*.MODEL モデル名 タイプ(パラメータ1 = パラメータ値1 …)
+* vto:閾値電圧
+.MODEL nmos1 nmos(vto=1)
+.MODEL pmos1 pmos(vto=-1)
+
+* 1:S 2:R 3:Q 4:invQ 5:Vdd RSFF
+x1 1 2 3 4 5 RSFF
+
+VCC 5 0 DC=5
+* PULSE(初期値 波高値 遅延時間 立上がり時間 立下り時間 パルス幅 周期)
+VS 1 0 PWL(0 0 5u 0 5.1u 5 10u 5 10.1u 0 15u 0 25u 0)
+VR 2 0 PWL(0 0 15u 0 15.1u 5 20u 5 20.1u 0 25u 0)
+
+* IC 初期値
+.IC V(3)=0
+*.TRAN 刻み 終了時刻
+.TRAN 1n 25u
+.END

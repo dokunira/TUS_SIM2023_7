@@ -1,0 +1,24 @@
+* SUBCKT Definitions - D Flip Flop -
+
+* 1:D 2:CK 3:Q 4:invQ 5:Vdd
+.SUBCKT DFF 1 2 3 4 5
+
+.INCLUDE CMOS_NAND.cir
+.INCLUDE CMOS_INV.cir
+
+* inA inB out Vdd NAND
+X1 6 1 7 5 NAND
+X2 13 6 8 5 NAND
+X3 7 10 9 5 NAND
+X4 9 8 10 5 NAND
+X5 2 9 11 5 NAND
+X6 14 2 12 5 NAND
+X7 11 4 3 5 NAND
+X8 3 12 4 5 NAND
+
+* in out Vdd INV
+X9 2 6 5 INV
+X10 1 13 5 INV
+X11 9 14 5 INV
+
+.ENDS

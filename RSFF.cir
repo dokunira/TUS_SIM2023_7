@@ -1,0 +1,17 @@
+* SUBCKT Definitions - RS Flip Flop -
+
+.INCLUDE CMOS_NAND.cir
+.INCLUDE CMOS_INV.cir
+
+* 1:S 2:R 3:Q 4:invQ 5:Vdd
+.SUBCKT RSFF 1 2 3 4 5 
+
+* inA inB out Vcc NAND
+X1 6 4 3 5 NAND
+X2 3 7 4 5 NAND
+
+* in out Vcc INV
+X3 1 6 5 INV
+X4 2 7 5 INV
+
+.ENDS
