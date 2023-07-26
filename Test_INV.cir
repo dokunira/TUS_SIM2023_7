@@ -14,8 +14,8 @@ X1 1 2 3 INV
 
 VCC 3 0 DC=5
 * PWL(時間 値 時間 値 ・・・)
-VD 1 0 PWL(0 0 5u 5 7u 2.5 10u 2.5 12u 0)
+VD 1 0 PWL(0 0 5u 0 10u 2.5 15u 2.5 20u 5 25u 5 30u 2.5 35u 2.5 40u 0)
 
 *.TRAN 刻み 終了時刻
-.TRAN 1n 12u
+.TRAN 1n 40u
 .END
